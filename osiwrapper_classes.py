@@ -18,4 +18,10 @@ class segment:
 
 
 # Frame is data link layer of OSI stack - outermost wrapper
-# class frame:
+class frame:
+    def __init__(self, src_mac, dst_mac, data):
+        self.src_mac = src_mac
+        self.dst_mac = dst_mac
+        self.data = data
+        self.type = 0x0800
+        self.length = 14 + (data.length if hasattr(data, 'length') else len(data))
