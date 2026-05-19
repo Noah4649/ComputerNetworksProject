@@ -14,8 +14,14 @@ class segment:
 
 
 # Packet is network layer of OSI stack - middle wrapper
-# class packet:
-
+class packet:
+    def __init__(self, src_ip, dst_ip, data, ttl=100, protocol=17):
+        self.src_ip = src_ip
+        self.dst_ip = dst_ip
+        self.data = data
+        self.length = 20 + (data.length if hasattr(data, 'length') else len(data))  
+        self.ttl = ttl  
+        self.protocol = protocol  
 
 # Frame is data link layer of OSI stack - outermost wrapper
 class frame:

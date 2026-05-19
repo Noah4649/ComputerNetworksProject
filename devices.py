@@ -62,7 +62,7 @@ class Router:
         return f.data
     
     #forward packet (L3)
-    def forward_packet(self, packet):
+    def forward_packet(self, pkt):
         print(f"{self.name}: Layer 3: Packet received from Data Link Layer: SRC_IP={pkt.src_ip}, DST_IP={pkt.dst_ip}, TTL={pkt.ttl}")
         print(f"{self.name}: Layer 3: Destination IP read: {pkt.dst_ip}")
 
