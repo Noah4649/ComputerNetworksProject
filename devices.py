@@ -28,7 +28,13 @@ class Host:
         self.learn_mac(f.data.src_ip, f.src_mac)
         print(f"{self.name}: Layer 2: Frame received")
         print(f"{self.name}: Layer 2: Packet delivered to Network Layer")
-        return f.data  # return encapsulated packet
+        return f.data  
+    
+    def receive_packet(self, pkt):
+        print(f"{self.name}: Layer 3: Packet received from Data Link Layer: SRC_IP={pkt.src_ip}, DST_IP={pkt.dst_ip}, TTL={pkt.ttl}")
+        print(f"{self.name}: Layer 3: Destination IP read: {pkt.dst_ip}")
+        print(f"{self.name}: Layer 3: Packetindentified as local delivery.")
+        return pkt.data  
     
 class Router:
     def __init__(self, name, interfaces, routing_table):
