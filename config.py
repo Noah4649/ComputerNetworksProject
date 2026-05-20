@@ -13,8 +13,8 @@ ROUTER1_INTERFACE2_MAC_ADDRESS = "CC:CC:CC:CC:CC:CC"
 SUBNET_MASK_NET_A = "255.255.255.0"
 SUBNET_MASK_NET_B = "255.255.255.0"
 
-HOST_A_NAME = "Ben"
-HOST_B_NAME = "Nour"
+HOST_A_NAME = "Host A"
+HOST_B_NAME = "Host B"
 
 ROUTING_TABLE = {
     "10.0.1.0/24": {"next_hop": "10.0.1.10", "interface": 1},
