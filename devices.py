@@ -1,5 +1,5 @@
-from network_parameters import *
-from osiwrapper_classes import frame, packet, segment
+from config import *
+from protocol import frame, packet, segment
 
 class Host:
     def __init__(self, name, ip, mac):
