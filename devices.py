@@ -92,7 +92,7 @@ class Host:
             print(f"{self.name}: Layer 4: Checksum verified")
 
             if seg.type == "DATA":
-                print(f"{self.name}: Layer 4: Data delivered to Application Layer")
+                print(f"{self.name}: Layer 4: DATA segment delivered to Application Layer. Data size={len(seg.data)}")
                 return self.send_ack(pkt)
             
             elif seg.type == "ACK":
@@ -127,7 +127,7 @@ class Router:
     #MAC learning (L2)
     def learn_mac(self, ip, mac, interface_id):
         self.mac_table[ip] = (mac, interface_id)
-        print(f"{self.name}: Layer 2: Source MAC learned: {mac} on interface {interface_id}")
+        print(f"{self.name}: Layer 2: Source MAC learned: {mac} on Interface {interface_id}")
 
     #MAC lookup (L2)
     def lookup_mac(self, ip):
@@ -162,7 +162,7 @@ class Router:
         #routing
         print(f"{self.name}: Layer 3: Routing table lookup performed")
         next_hop, interface_id = self.route(pkt.dst_ip)
-        print (f"{self.name}: Layer 3: Next hop determined: {next_hop}")
+        print (f"{self.name}: Layer 3: Next-hop determined: {next_hop}")
         print(f"{self.name}: Layer 3: Outgoing interface selected (Interface {interface_id})")
         print(f"{self.name}: Layer 3: Packet forwarded to Data Link Layer")
 
