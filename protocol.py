@@ -21,19 +21,19 @@ class segment:
 
 # Packet is network layer of OSI stack - middle wrapper
 class packet:
-    def __init__(self, src_ip, dst_ip, data, ttl=100, protocol=17):
+    def __init__(self, src_ip, dst_ip, segment, ttl=100, protocol=17):
         self.src_ip = src_ip
         self.dst_ip = dst_ip
-        self.data = data
-        self.length = 20 + (data.length if hasattr(data, 'length') else len(data))  
-        self.ttl = ttl  
-        self.protocol = protocol  
+        self.segment = segment
+        self.length = 12 + segment.length
+        self.ttl = ttl
+        self.protocol = protocol
 
 # Frame is data link layer of OSI stack - outermost wrapper
 class frame:
-    def __init__(self, src_mac, dst_mac, data):
+    def __init__(self, src_mac, dst_mac, packet):
         self.src_mac = src_mac
         self.dst_mac = dst_mac
-        self.data = data    #encapsulated packet
+        self.packet = packet
         self.type = 0x0800  #IPv4 ethertype
-        self.length = 14 + (data.length if hasattr(data, 'length') else len(data))
+        self.length = 14 + packet.length
