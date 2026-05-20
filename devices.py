@@ -47,6 +47,9 @@ class Host:
         print(f"{self.name}: Layer 2: Packet delivered to Network Layer")
         return f.packet
     
+    def create_ack_segment(self, recieved_segment):
+        
+    
     def receive_packet(self, pkt):
         print(f"{self.name}: Layer 3: Packet received from Data Link Layer: SRC_IP={pkt.src_ip}, DST_IP={pkt.dst_ip}, TTL={pkt.ttl}")
         print(f"{self.name}: Layer 3: Destination IP read: {pkt.dst_ip}")
@@ -64,12 +67,15 @@ class Host:
 
             if seg.type == "DATA":
                 print(f"{self.name}: Layer 4: Data delivered to Application Layer")
-                return self.send_ack(pkt) #### TO DO
+                return self.send_ack(pkt.segment) #### TO DO
             
             elif seg.type == "ACK":
                 print(f"{self.name}: Layer 4: ACK recieved: seq={seg.seq_num}")
         
         return None
+
+    def send_ack(self, recieved_segment):
+        ack.segment
     
 class Router:
     def __init__(self, name, interfaces, routing_table):
