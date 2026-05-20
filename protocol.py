@@ -1,17 +1,23 @@
 # Segment is transport layer of OSI stack - innermost wrapper
 class segment:
-    def __init__(self, src_port, dst_port, data):
+    def __init__(self, src_port, dst_port, data, dtype, seq_number):
         self.src_port = src_port
         self.dst_port = dst_port
         self.data = data
-        self.length = len(data) + 10
-        # compute the checksum
-        # self.checksum 
-        # type needs to be ack or data
-        # self.type
-        # seq number alternates between 0 and 1
-        # self.seq_number
+        self.data_length = len(data)
+        self.length = self.data_length + 10
+        self.type = dtype #could be converted to boolean. Either ACK or DATA
+        self.seq_number = seq_number #could be converted to boolean. seq_number alternates between 0 and 1
+        self.checksum = self.calc_checksum()
 
+    def calc_checksum(self):
+        return sum(ord(char) for char in self.data) % 65535
+    
+    def verify_checksum(self):
+        if self.checksum == self.calc_checksum():
+            return True
+        else:
+            return False
 
 # Packet is network layer of OSI stack - middle wrapper
 class packet:
