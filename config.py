@@ -17,8 +17,8 @@ HOST_A_NAME = "Ben"
 HOST_B_NAME = "Nour"
 
 ROUTING_TABLE = {
-    "10.0.1.0/24": {"next_hop": "10.0.1.10", "interface": "1"},
-    "10.0.2.0/24": {"next_hop": "10.0.2.20", "interface": "2"}
+    "10.0.1.0/24": {"next_hop": "10.0.1.10", "interface": 1},
+    "10.0.2.0/24": {"next_hop": "10.0.2.20", "interface": 2}
 }
 
 ROUTER1_INTERFACES = {
