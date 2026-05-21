@@ -4,7 +4,7 @@ A Python simulation of a simplified network stack implementing Layer 2 (Data Lin
 
 ## Group Members
 - Nour Zahrawi - 24106807
-- Ben Holliday - Student ID
+- Ben Holliday - 24443977
 
 
 ## How to Run
